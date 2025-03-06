@@ -1,29 +1,29 @@
 
-#define PERIPH_BASE				  (0x40000000UL)
+#define PERIPH_BASE				(0x40000000UL)
 #define AHB1PERIPH_OFFSET		(0x00020000UL)
 #define AHB1PERIPH_BASE			(PERIPH_BASE + AHB1PERIPH_OFFSET)
 
-#define GPIOA_OFFSET			  (0x0000UL)
-#define GPIOA_BASE			  	(AHB1PERIPH_BASE + GPIOA_OFFSET)
+#define GPIOA_OFFSET			(0x0000UL)
+#define GPIOA_BASE				(AHB1PERIPH_BASE + GPIOA_OFFSET)
 
-#define RCC_OFFSET				  (0x3800UL)
-#define RCC_BASE				    (AHB1PERIPH_BASE + RCC_OFFSET)
+#define RCC_OFFSET				(0x3800UL)
+#define RCC_BASE				(AHB1PERIPH_BASE + RCC_OFFSET)
 
 #define AHB1ENR_OFFSET			(0x30UL)
-#define RCC_AHB1ENR				  (*(volatile unsigned int *)(RCC_BASE + AHB1ENR_OFFSET))
+#define RCC_AHB1ENR				(*(volatile unsigned int *)(RCC_BASE + AHB1ENR_OFFSET))
 
 
-#define MODER_OFFSET			  (0x00UL)
-#define GPIOA_MODER				  (*(volatile unsigned int *)(GPIOA_BASE + MODER_OFFSET))
+#define MODER_OFFSET			(0x00UL)
+#define GPIOA_MODER				(*(volatile unsigned int *)(GPIOA_BASE + MODER_OFFSET))
 
-#define ODR_OFFSET				  (0x14UL)
-#define GPIOA_ODR				  (*(volatile unsigned int *)(GPIOA_BASE + ODR_OFFSET))
+#define ODR_OFFSET				(0x14UL)
+#define GPIOA_ODR				(*(volatile unsigned int *)(GPIOA_BASE + ODR_OFFSET))
 
 
-#define GPIOAEN					  (1U << 0) // 0000 0000 0000 0000 0000 0000 0000 0001
+#define GPIOAEN					(1U << 0) // 0000 0000 0000 0000 0000 0000 0000 0001
 
-#define PIN5					    (1U << 5)
-#define LED_PIN				  	(PIN5)
+#define PIN5					(1U << 5)
+#define LED_PIN					(PIN5)
 
 /*	GPIO OUTPUT MODE
  *  |= (1U << 10)   // Set bit 10 to 1
