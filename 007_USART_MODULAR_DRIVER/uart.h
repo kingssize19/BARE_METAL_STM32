@@ -16,7 +16,7 @@
 #define 	SYS_FREQ		16000000    /*!< System clock frequency (16 MHz)               */
 #define 	APB1_CLK		SYS_FREQ    /*!< APB1 peripheral clock (same as system clock)  */
 
-#define 	UART_BAUDRATE  115200    /*!< UART baud rate                                */
+#define 	UART_BAUDRATE    115200    /*!< UART baud rate                                */
 
 
 void usart2_tx_init(void);
