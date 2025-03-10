@@ -6,17 +6,17 @@
 #include <stdio.h>
 
 
-#define		GPIOAEN			(1U << 0) 		/*!< Enable clock for GPIOA  					 	            */
-#define 	USART2EN		(1U << 17)		/*!< Enable clock for USART2 					 	            */
+#define		GPIOAEN			(1U << 0) 		/*!< Enable clock for GPIOA  					 	*/
+#define 	USART2EN		(1U << 17)		/*!< Enable clock for USART2 					 	*/
 
-#define		CR1_TE			(1U << 3)		  /*!< Transmitter enable		 					 	              */
-#define 	CR1_UE			(1U << 13)		/*!< UART enable			 					 	                  */
-#define 	SR_TXE			(1U << 7)		  /*!< TXE flag : Transmit data register empty	 	    */
+#define		CR1_TE			(1U << 3)		/*!< Transmitter enable		 					 	*/
+#define 	CR1_UE			(1U << 13)		/*!< UART enable			 					 	*/
+#define 	SR_TXE			(1U << 7)		/*!< TXE flag : Transmit data register empty	 	*/
 
-#define 	SYS_FREQ		16000000		  /*!< System clock frequency (16 MHz)			 	        */
-#define 	APB1_CLK		SYS_FREQ		  /*!< APB1 peripheral clock (same as system clock)	  */
+#define 	SYS_FREQ		16000000		/*!< System clock frequency (16 MHz)			 	*/
+#define 	APB1_CLK		SYS_FREQ		/*!< APB1 peripheral clock (same as system clock)	*/
 
-#define 	UART_BAUDRATE	115200			/*!< UART baud rate									                */
+#define 	UART_BAUDRATE	115200			/*!< UART baud rate									*/
 
 
 void usart2_tx_init(void);
