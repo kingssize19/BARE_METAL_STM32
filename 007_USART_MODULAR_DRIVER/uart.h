@@ -13,8 +13,8 @@
 #define 	CR1_UE			(1U << 13)   /*!< UART enable			 					 	*/
 #define 	SR_TXE			(1U << 7)    /*!< TXE flag : Transmit data register empty	 	*/
 
-#define 	SYS_FREQ		16000000    /*!< System clock frequency (16 MHz)               */
-#define 	APB1_CLK		SYS_FREQ    /*!< APB1 peripheral clock (same as system clock)  */
+#define 	SYS_FREQ    16000000    /*!< System clock frequency (16 MHz)               */
+#define 	APB1_CLK    SYS_FREQ    /*!< APB1 peripheral clock (same as system clock)  */
 
 #define 	UART_BAUDRATE    115200    /*!< UART baud rate                                */
 
