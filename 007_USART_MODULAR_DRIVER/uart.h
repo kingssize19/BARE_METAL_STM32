@@ -6,8 +6,8 @@
 #include <stdio.h>
 
 
-#define		GPIOAEN			(1U << 0) 		/*!< Enable clock for GPIOA  					 	*/
-#define 	USART2EN		(1U << 17)		/*!< Enable clock for USART2 					 	*/
+#define		GPIOAEN			(1U << 0)    /*!< Enable clock for GPIOA  					 	*/
+#define 	USART2EN		(1U << 17)   /*!< Enable clock for USART2 					 	*/
 
 #define		CR1_TE			(1U << 3)		/*!< Transmitter enable		 					 	*/
 #define 	CR1_UE			(1U << 13)		/*!< UART enable			 					 	*/
