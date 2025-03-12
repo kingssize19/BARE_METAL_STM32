@@ -65,6 +65,14 @@ typedef struct
 } USART_TypeDef;
 ```
 
+### 1. SR (Status Register) - Durum Register'ı (0x00)
+
+* Bu register, USART modülünün durum bilgilerini tutar. Örneğin, veri alındı mı, veri gönderildi mi, hata oluştu mu gibi bilgiler bu registerda bulunur.
+* **Önemli Bitler :**
+  * **RXNE (Receive Data Register Not Empty) :** Alınan veri registerda hazır olduğunda bu bit set edilir.
+  * **TXE (Transmit Data Register Empty) :** Gönderilecek veri registerı boş olduğunda bu bit set edilir.
+  * **TC (Transmission Complete) :** Veri gönderme işlemi tamamlandığında bu bit set edilir.
+
 
 
 
