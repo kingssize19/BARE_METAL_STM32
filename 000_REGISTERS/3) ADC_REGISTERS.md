@@ -108,7 +108,7 @@ ADC'nin çalışma modunu ve kesme ayarlarını kontrol eder.
 * **JEOCIE (Injected End of Conversion Interrupt Enable) :** Injected dönüşüm tamamlandığında kesme oluşturur.
 * **EOCIE (End of Conversion Interrupt Enable) :** Regular dönüşüm tamamlandığında kesme oluşturur.
 
-# 3. CR2 (Control Register 2) - Adres: 0x08
+## 3. CR2 (Control Register 2) - Adres: 0x08
 
 ADC'nin dönüşüm başlatma ve çalışma modu ayarlarını kontrol eder.
 
@@ -118,57 +118,57 @@ ADC'nin dönüşüm başlatma ve çalışma modu ayarlarını kontrol eder.
 * **EXTEN (External Trigger Enable) :** Harici tetikleme kaynağını etkinleştirir.
 * **JSWSTART (Injected Start Conversion) :** Yazılımsal tetikleme ile injected dönüşümü başlatır.
 
-# 4. SMPR1 (Sample Time Register 1) - Adres: 0x0C
+## 4. SMPR1 (Sample Time Register 1) - Adres: 0x0C
 
 ADC kanallarının örnekleme sürelerini belirler. Bu register, kanal 10'dan kanal 18'e kadar olan kanalların örnekleme sürelerini ayarlar.
 
 * **SMPx (Sample Time for Channel x) :** Her kanal için örnekleme süresini belirler. Örnekleme süresi, ADC'nin analog sinyali örnekleme süresini belirler.
 
-# 5. SMPR2 (Sample Time Register 2) - Adres: 0x10
+## 5. SMPR2 (Sample Time Register 2) - Adres: 0x10
 
 ADC kanallarının örnekleme sürelerini belirler. Bu register, kanal 0'dan kanal 9'a kadar olan kanalların örnekleme sürelerini ayarlar.
 
 * **SMPx (Sample Time for Channel x) :** Her kanal için örnekleme süresini belirler.
 
-# 6. JOFR1, JOFR2, JOFR3, JOFR4 (Injected Channel Data Offset Registers) - Adres: 0x14, 0x18, 0x1C, 0x20
+## 6. JOFR1, JOFR2, JOFR3, JOFR4 (Injected Channel Data Offset Registers) - Adres: 0x14, 0x18, 0x1C, 0x20
 
 Injected kanallar için ofset değerlerini saklar. Bu ofset değerleri, dönüşüm sonuçlarından çıkarılır.
 
 * **JOFRx (Injected Channel x Offset) :** Injected kanalın ofset değerini belirler.
 
-# 7. HTR (Watchdog Higher Threshold Register) - Adres: 0x24
+## 7. HTR (Watchdog Higher Threshold Register) - Adres: 0x24
 
 ADC watchdog üst eşik değerini belirler. Eğer dönüşüm sonucu bu değeri aşarsa, watchdog tetiklenir.
 
 * **HT (Higher Threshold) :** Watchdog üst eşik değerini belirler.
 
-# 8. LTR (Watchdog Lower Threshold Register) - Adres: 0x28
+## 8. LTR (Watchdog Lower Threshold Register) - Adres: 0x28
 
 ADC watchdog alt eşik değerini belirler. Eğer dönüşüm sonucu bu değerin altına düşerse, watchdog tetiklenir.
 
 * **LT (Lower Threshold) :** Watchdog alt eşik değerini belirler.
 
-# 9. SQR1, SQR2, SQR3 (Regular Sequence Registers) - Adres: 0x2C, 0x30, 0x34
+## 9. SQR1, SQR2, SQR3 (Regular Sequence Registers) - Adres: 0x2C, 0x30, 0x34
 
 Regular dönüşüm sırasında hangi kanalların kullanılacağını ve sıralarını belirler.
 
 **SQx (Sequence x) :** Regular dönüşüm sırasında kullanılacak kanal numarasını belirler.
 * **L (Sequence Length) :** Regular dönüşüm sırasında kaç kanalın kullanılacağını belirler.
 
-# 10. JSQR (Injected Sequence Register) - Adres: 0x38
+## 10. JSQR (Injected Sequence Register) - Adres: 0x38
 
 Injected dönüşüm sırasında hangi kanalların kullanılacağını ve sıralarını belirler.
 
 * **JSQx (Injected Sequence x) :** Injected dönüşüm sırasında kullanılacak kanal numarasını belirler.
 * **JL (Injected Sequence Length) :** Injected dönüşüm sırasında kaç kanalın kullanılacağını belirler.
 
-# 11. JDR1, JDR2, JDR3, JDR4 (Injected Data Registers) - Adres: 0x3C, 0x40, 0x44, 0x48
+## 11. JDR1, JDR2, JDR3, JDR4 (Injected Data Registers) - Adres: 0x3C, 0x40, 0x44, 0x48
 
 Injected dönüşüm sonuçlarını saklar.
 
 * **JDATA (Injected Conversion Data) :** Injected dönüşüm sonucunu içerir.
 
-# 12. DR (Regular Data Register) - Adres: 0x4C
+## 12. DR (Regular Data Register) - Adres: 0x4C
 
 Regular dönüşüm sonucunu saklar.
 
