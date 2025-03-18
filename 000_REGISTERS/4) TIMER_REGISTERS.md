@@ -78,18 +78,101 @@ Zamanlayıcıların başlıca kullanım alanları şunlardır :
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# TIMER REGISTERS
+
+## 1. Prescaler (PSC)
+
+**Prescaler**, zamanlayıcının saat hızını bölerek, zamanlayıcıyı daha düşük bir frekansta çalıştırmak için kullanılır. Zamanlayıcı saat hızı genellikle sistem saatine bağlıdır. Prescaler, bu saat hızını böler ve böylece zamanlayıcı aralığını uzatır.
+
+```c
+TIM2->PSC = 1600 - 1;
+```
+
+* **TIM2->PSC :** **TIM2** zamanlayıcısının **Prescaler** kaydına erişimi sağlar. Bu örnekte, **1600 - 1**  olarak ayarlandığında, zamanlayıcı her 1600 sistem saat döngüsünde bir adım atar (başka bir deyişle, prescaler değeri 1599 olarak ayarlanmıştır.)
+* Bu ayar, zamanlayıcıyı **1 MHz** gibi daha düşük bir hızda çalıştırmak için kullanılır (eğer sistem saati 1600 MHz ise).
+
+## 2. Auto-Reload Register (ARR)
+
+**Auto-Reload Register (ARR)**, zamanlayıcının tekrar etme değerini belirler. Zamanlayıcı, ARR değerine ulaşınca sıfırlanır ve yeniden başlar. Bu, zamanlayıcının belirli bir süre aralığında kesme yapmasını sağlar.
+
+```c
+TIM2->ARR = 10000;
+```
+
+* **TIM2->ARR :** TIM2 zamanlayıcısının **Auto-Reload Register** kaydına erişimi sağlar. Bu örnekte, zamanlayıcı her 10000 döngüde bir sıfırlanacaktır.
+* Zamanlayıcı bir döngü sonunda 10000'e ulaştığında, sıfırlanıp yeniden başlar ve bu aralıkta bir kesme üretilebilir.
+
+## 3. Control Register 1 (CR1)
+
+**Control Register 1 (CR1)**, zamanlayıcının çalışma modunu ve temel ayarları kontrol eder. Bu register üzerinden zamanlayıcıyı başlatabilir veya durdurabilirsiniz.
+
+```c
+TIM2->CR1 = 1;  // Enable timer 2
+```
+
+* **TIM2->CR1 :** TIM2 zamanlayıcısının **Control Register 1** kaydına erişimi sağlar. Bu örnekte, CR1 kaydına 1 yazmak, zamanlayıcıyı etkinleştirir.
+* Zamanlayıcıyı aktif hale getirmek için bu bit 1 yapılır. Eğer 0 yapılırsa, zamanlayıcı durur.
+
+## 4. Status Register (SR)
+
+**Status Register (SR)**, zamanlayıcının durumunu belirten bayrakları (flags) içerir. Bu bayraklar, zamanlayıcının olaylarını veya kesme durumlarını belirtir. Örneğin, zamanlayıcı bir güncelleme kesmesi (update interrupt) gerçekleştirdiğinde bir bayrak set edilebilir.
+
+```c
+TIM2->SR & 1;    // Check update interrupt flag
+TIM2->SR &= ~1;  // Clear update interrupt flag
+```
+
+* **TIM2->SR & 1 :** Bu işlem, **update interrupt flag**'inin (güncelleme kesmesi bayrağı) durumunu kontrol eder. Eğer bayrak set edilirse (1), bu durumda bir kesme gerçekleşmiştir.
+* **TIM2->SR &= ~1 :** Bu işlem, **update interrupt flag**'ini temizler (0 yapar). Yani, kesme bayrağını sıfırlar.
+
+## 5. Capture/Compare Register (CCR1, CCR2, CCR3, CCR4)
+
+**Capture/Compare Registers (CCR)** zamanlayıcı kanalındaki karşılaştırma ve yakalama işlemleri için kullanılır. Zamanlayıcılar, bu kayıtlara yazılarak bir karşılaştırma yapılabilir veya dış bir sinyali yakalayarak bir zaman damgası alınabilir.
+
+```c
+timestamp = TIM2->CCR1;  // Read capture value
+```
+
+* **TIM2->CCR1 :** TIM2 zamanlayıcısının **Capture/Compare Register 1** kaydına erişimi sağlar. Burada, kanal 1'in yakaladığı değeri okuyabilirsiniz. Bu değer, zamanlayıcı bir sinyalin kenarını (rising/falling edge) yakaladığında elde edilen zaman damgasıdır.
+
+## 6. Capture Compare Mode Register 1 (CCMR1)
+
+**Capture Compare Mode Register 1 (CCMR1)**, kanal1 ve kanal 2 için yakalama ve karşılaştırma fonksiyonlarını yapılandırır. Burada, kanalın hangi türde çalışacağı (input capture or output compare) belirlenebilir.
+
+```c
+TIM2->CCMR1 = 0x41;  // Set CH1 to capture at every edge
+```
+
+* **TIM2->CCMR1 = 0x41 :** Bu değer, kanal 1'in her iki kenarda da (hem yükselen hem de alçalan) yakalama yapmasını sağlar. 0x41, özel bir bit desenini ifade eder :
+  * **0x40** bitini set etmek, kanalın her iki kenarda da çalışmasını sağlar (yükselen ve alçalan kenar).
+  * **0x01** bitini set etmek, giriş sinyalini ölçmek için **"input capture"** modunu etkinleştirir.
 
 
+## 7. Capture Compare Mode Register 2 (CCMR2)
 
+**Capture Compare Mode Register 2 (CCMR2)**, kanal 3 ve kanal 4 için benzer yapılandırmayı sağlar. Burada da yaklama veya karşılaştırma fonksiyonları belirlenebilir.
 
+## 8. Capture/Compare Enable Register (CCER)
 
+**Capture/Compare Enable Register (CCER)**, her kanal için **input capture** veya **output compare** işlevlerini etkinleştirmek için kullanılır.
 
+```c
+TIM2->CCER = 1;  // Enable channel 1
+```
 
+* **TIM2->CCER :** Bu kayıt üzerinden kanal 1'i etkinleştirebilirsiniz. **1** yazmak, kanal 1'i aktive eder. Bu durumda kanal 1, ya dış bir sinyali yakalayacak ya da zamanlayıcıyla karşılaştırma yapacaktır.
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Özet 
 
-
-
+* **PSC :** Zamanlayıcının hızını belirler.
+* **ARR :** Zamanlayıcının döngüsünün bitiş değerini belirler.
+* **CR1 :** Zamanlayıcıyı başlatma veya durdurma işlevini yerine getirir.
+* **SR :** Zamanlayıcı durumunu kontrol etmek için kullanılır.
+* **CCR :** Yakalama ve karşılaştırma için kullanılan kayıtlardır.
+* **CCMR1/CCMR2 :** Kanalın işlevini belirler (giriş yakalama veya çıkış karşılaştırma).
+* **CCER :** Kanal işlevini etkinleştiren kayıttır (yakalama/karşılaştırma).
 
 
 
